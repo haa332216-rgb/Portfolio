@@ -198,7 +198,7 @@ function count(el){var n=+el.dataset.n,d=+el.dataset.d,s=el.dataset.s||'',st=nul
  (function f(ts){st=st||ts;var p=Math.min((ts-st)/1500,1),e=1-Math.pow(1-p,3);el.textContent=(n*e).toFixed(d)+(p===1?s:'');if(p<1)requestAnimationFrame(f)})(performance.now())}
 var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
 $$('.rv,.tl article').forEach(function(x){io.observe(x)});
-setTimeout(function(){$$('.stats strong').forEach(count)},700);
+setTimeout(function(){$$('.stats strong[data-n]').forEach(count)},700);
 // scroll progress + timeline fill
 var bar=$('#bar'),tl=$('#tl');
 function sc(){var h=document.documentElement,p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);bar.style.transform='scaleX('+p+')';
